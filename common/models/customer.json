@@ -1,0 +1,53 @@
+{
+  "name": "Customer",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "avatar": {
+      "type": "buffer"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "galleries": {
+      "type": "hasMany",
+      "model": "Gallery",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "contacts": {
+      "type": "hasOne",
+      "model": "Contact",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
